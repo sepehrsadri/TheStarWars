@@ -21,7 +21,7 @@ internal object NetworkModule {
 
     private const val API_BASE_URL = "https://swapi.dev/api/"
     private const val JSON_CONTENT_TYPE = "application/json"
-    private const val TIME_OUT = 15L
+    private const val NETWORK_TIME_OUT_IN_SECONDS = 15L
 
     @Provides
     fun providesHttpLoggingInterceptor(): Interceptor {
@@ -47,10 +47,10 @@ internal object NetworkModule {
         }
 
         return okHttpClientBuilder
-            .readTimeout(TIME_OUT, TimeUnit.SECONDS)
-            .writeTimeout(TIME_OUT, TimeUnit.SECONDS)
-            .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
-            .callTimeout(TIME_OUT, TimeUnit.SECONDS)
+            .readTimeout(NETWORK_TIME_OUT_IN_SECONDS, TimeUnit.SECONDS)
+            .writeTimeout(NETWORK_TIME_OUT_IN_SECONDS, TimeUnit.SECONDS)
+            .connectTimeout(NETWORK_TIME_OUT_IN_SECONDS, TimeUnit.SECONDS)
+            .callTimeout(NETWORK_TIME_OUT_IN_SECONDS, TimeUnit.SECONDS)
             .build()
     }
 
